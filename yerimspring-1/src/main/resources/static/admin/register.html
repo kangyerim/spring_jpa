@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+	.border_black{border : 1px solid black;}
+	.center{margin : 0 auto}
+</style>
+</head>
+<body>
+
+	<table id ="thisPage">
+	<tr><td id="h2"><h2>관리자 등록</h2></td></tr>
+	<tr><td><table id="table">
+		<tr><td  rowspan="5"><img id="profile" style ="width : 100%; height : 100%;" src="https://lh3.googleusercontent.com/proxy/sLpjv4jqQCU5sKuOAnmbRZRQUoRXXhlwdnHEkiQJen6eVPIZ0aDuRc8uKNuq9eF70qMUacCIOkct5MfZUeleYBlzCnjkx_1alyB_XTarzA3vnhw7Fi_eRGbKL7FMSQxYSwTyl3FED3bMSDgr3kCDDfzq-kPvVcLYfhsX5FVThQ1cYdzsD0fibb8jrABCtbM3ScSnPhD2xDKrOehhRZDG69a4d23ZaRoxDnA9GRdnkOD_2Slzwhm_5Yr1Q0rpp5c_V5qI1b4KMf2enveTidIpQN1KU31QtsOuuV3XVbzMaikNZs8jprPvv0DHF6TgXLzdZxKy6nAUGhy52_fWp_NRXaCgY6j37lyFgBQFBVikXYs_cxEjkLK8OzZnFhgHK5eQM0EP0Q"></td><td><label>이름 </label></td><td><input id ="name" type="text"/></td></tr>
+		<tr><td><label>직책</label></td><td><input id='position' type="text"/></td></tr>
+		<tr><td><label>핸드폰 번호</label></td><td><input id="phoneNumber" type="text"/></td></tr>
+		<tr><td><label>이메일 주소</label></td><td><input id='email' type="text"/></td></tr>
+		<tr><td><label>등록한 날짜</label></td><td><input id ='regiterDate' type="text"/></td></tr>
+	</table></td></tr>
+	<tr><td><table id="buttons">
+		<tr><td><input id="register_b" type="button" value="등록하기"> </td><td><input id="cancel_b" type="button" value="취소"></td></tr>
+	</table></td></tr>
+	</table>
+
+
+	
+	
+	<section>
+		<article>
+			<form>
+				
+				
+			</form>
+		</article>
+	</section>
+
+	<script>
+		$('#thisPage').addClass('center')
+		$('#h2').addClass('center').css({background : '#ffe8df'})
+		$('#buttons').addClass('center')
+		$('#table').addClass('border_black')
+		$('#profile').css({width : '140px', height : '180px'})
+		$('#register_b').css('cursor', 'pointer').click(e => {
+			e.preventDefault()
+			location.href = 'access.html'
+			alert('너의 사번과 비번을 알아야한다')
+		})
+		$('#cancel_b').css('cursor','pointer').click(e => {
+			e.preventDefault()
+			location.href = '../index.html'
+		})
+	</script>
+</body>
+</html>
+
+
+
+
+
+

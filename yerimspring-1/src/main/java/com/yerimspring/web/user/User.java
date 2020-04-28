@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class User {
-	private String userid, password, name, ssn, address;
+	private String userid, password, name, ssn, address, profile, regiterDate, email, phoneNumber;
 	
 	@Override
 	public String toString() {
