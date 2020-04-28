@@ -109,7 +109,7 @@ footer {
 		$('#joinButton').click(e => {
 			e.preventDefault()
 			$.ajax({
-					url : '/member/join',
+					url : '/admin/join',
 					type : 'post',
 					data : JSON.stringify(
 							{userid: $('#userid').val(),
