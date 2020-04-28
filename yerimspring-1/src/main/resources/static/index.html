@@ -89,7 +89,7 @@ footer {
 		<article>
 			<form action="#">
 				<label>ID </label><br> <input id="userid" type="text"><br> 
-				<label>PassWeeeeord</label><br> <input id="password" type="text"><br>
+				<label>PassWord</label><br> <input id="password" type="text"><br>
 				<input id="loginButton" type="button" value="로그인">
 				<input id="cancelButton" type="button" value="취소">
 			</form>
@@ -104,7 +104,7 @@ footer {
 			.css('cursor','pointer')
 			.click( e => {
 				e.preventDefault()
-				location.href = "member/join.html"
+				location.href = "admin/join.html"
 		})
 		$('#login-a')
 			.css('cursor','pointer')
@@ -133,7 +133,7 @@ footer {
 			
 		$('#loginButton').click(e => {
 			$.ajax({
-				url : '/member/login',
+				url : '/admin/login',
 				type : 'post',
 				data : JSON.stringify({
 						userid : $('#userid').val(),
@@ -143,7 +143,7 @@ footer {
 				contentType : 'application/json',
 				success : d => {
 					if(d == 'Success'){
-						location.href = 'member/list.html'
+						location.href = 'admin/list.html'
 					}else {
 						alert('다시 로그인 해람뫄')
 						location.href = "index.html"

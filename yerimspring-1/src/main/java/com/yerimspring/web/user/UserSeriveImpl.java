@@ -19,71 +19,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserSeriveImpl implements UserService {
-	private Map<String, Object> map;
 	public final static String FILE_PATH = "C:\\Users\\bit\\Documents\\workspace-spring-tool-suite-4-4.6.0.RELEASE\\yerimspring\\src\\main\\resources\\static\\user\\";
-
-	public UserSeriveImpl() {
-		map = new HashMap<>();
-	}
 
 	@Override
 	public void add(User user) {
-		map.put(user.getUserid(), user);
-	}
-
-	@Override
-	public int count() {
-		return map.size();
-	}
-
-	@Override
-	public User signin(User user) {
-		User returnUser = null;
-		if (map.containsKey(user.getUserid())) {
-			User u = detail(user.getUserid());
-			if (user.getPassword().equals(u.getPassword())) {
-				returnUser = u;
-			}
-		}
-		return returnUser;
-	}
-
-	@Override
-	public User detail(String userid) {
-		User t = (User) map.get(userid);
-		return t;
-	}
-
-	@Override
-	public boolean update(User user) {
-		map.replace(user.getUserid(), user);
-		return true;
-	}
-
-	@Override
-	public boolean remove(String userid) {
-		map.remove(userid);
-		return true;
-	}
-
-	@Override
-	public List<User> list() {
-		List<User> list = new ArrayList<>();
-		@SuppressWarnings("rawtypes")
-		Set set = map.entrySet();
-		@SuppressWarnings("rawtypes")
-		Iterator it = set.iterator();
-		while(it.hasNext()) {
-			@SuppressWarnings("unchecked")
-			Map.Entry<String, User> e = (Entry<String, User>) it.next();
-			list.add(e.getValue());
-		}
-
-		return list;
-	}
-
-	@Override
-	public void saveFile(User user) {
 		try {
 			File file = new File(FILE_PATH + "list.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
@@ -99,7 +38,32 @@ public class UserSeriveImpl implements UserService {
 	}
 
 	@Override
-	public List<User> readFile() {
+	public int count() {
+		return 0;
+	}
+
+	@Override
+	public User signin(User user) {
+		return user;
+	}
+
+	@Override
+	public User detail(String userid) {
+		return null;
+	}
+
+	@Override
+	public boolean update(User user) {
+		return false;
+	}
+
+	@Override
+	public boolean remove(String userid) {
+		return false;
+	}
+
+	@Override
+	public List<User> list() {
 		List<User> userList = new ArrayList<>();
 		List<String> list = new ArrayList<>();
 		try {
@@ -127,10 +91,11 @@ public class UserSeriveImpl implements UserService {
 		return userList;
 	}
 
+
 	@Override
 	public boolean idCheck(String userid) {
 		boolean idCheck = true;
-		List<User> check = readFile();
+		List<User> check = list();
 		for(int i = 0; i < check.size(); i++) {
 			if(userid.equals(check.get(i).getUserid())) {
 				idCheck = false;

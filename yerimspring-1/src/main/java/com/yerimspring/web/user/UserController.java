@@ -25,7 +25,7 @@ public class UserController {
 	@PostMapping("/signup")
 	public Messenger signup(@RequestBody User user) {
 		int count = userService.count();
-		userService.saveFile(user);
+		userService.add(user);
 		//return (userService.count() == (count + 1))? Messenger.Success : Messenger.FAIL;
 		return Messenger.Success;
 	}
@@ -33,7 +33,7 @@ public class UserController {
 	@GetMapping("/list")
 	public List<User> list(){
 		//return userService.list();
-		return userService.readFile();
+		return userService.list();
 	}
 	
 	@GetMapping("/idCheck/{userid}")
