@@ -82,5 +82,63 @@ public class UserSeriveImpl implements UserService {
 		return list;
 	}
 
+	@Override
+	public void saveFile(User user) {
+		try {
+			File file = new File(FILE_PATH + "list.txt");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+					String messege = user.toString();
+					writer.write(messege);
+					writer.newLine();
+					writer.flush(); //보내기
+			
+		} catch(Exception e) {
+			System.out.println("파일 쓰기에서 에러발생");
+		}
+		
+	}
+
+	@Override
+	public List<User> readFile() {
+		List<User> userList = new ArrayList<>();
+		List<String> list = new ArrayList<>();
+		try {
+			File file = new File(FILE_PATH + "list.txt");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String messege = "";
+					while((messege = reader.readLine()) != null) {
+						list.add(messege);
+					}
+					reader.close(); //닫기
+		} catch(Exception e) {
+			System.out.println("파일 읽기에서 에러 발생");
+		}
+		User u = null;
+		for(int i = 0; i < list.size(); i++) {
+			u = new User();
+			String[] arr = list.get(i).split(",");
+			u.setUserid(arr[0]);
+			u.setPassword(arr[1]);
+			u.setName(arr[2]);
+			u.setSsn(arr[3]);
+			u.setAddress(arr[4]);
+			userList.add(u);
+		}
+		return userList;
+	}
+
+	@Override
+	public boolean idCheck(String userid) {
+		boolean idCheck = true;
+		List<User> check = readFile();
+		for(int i = 0; i < check.size(); i++) {
+			if(userid.equals(check.get(i).getUserid())) {
+				idCheck = false;
+				break;
+			}
+		}
+		
+		return idCheck;
+	}
 
 }
