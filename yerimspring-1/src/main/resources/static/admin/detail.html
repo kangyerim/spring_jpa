@@ -45,31 +45,12 @@
 		$('#buttons').addClass('center')
 		$('#table').addClass('border_black center')
 		$('#profile').css({width : '140px', height : '180px'})
-		$('#register_b').css('cursor', 'pointer').click(e => {
-			e.preventDefault()
-			$.ajax({
-				url : '/admins',
-				data : 'post',
-				dataType : JSON.stringify({
-					name : $('#name').val(),
-					position : $('#position').val(),
-					phoneNumber : $('#phoneNumber').val(),
-					email : $('#email').val()
-				}),
-				contentType : 'application/json',
-				success : d => {
-					location.href = 'access.html'
-					alert('너의 사번과 비번을 알아야한다')
-				},
-				error : (r,x,q) => {
-					alert(r.status)
-				}
-			})
-		})
+		$('#register_b').css('cursor', 'pointer')
 		$('#cancel_b').css('cursor','pointer').click(e => {
 			e.preventDefault()
 			location.href = '../index.html'
 		})
+		$.getJSON('/admins/'+'123', d=> {})
 	</script>
 </body>
 </html>

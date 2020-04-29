@@ -3,20 +3,16 @@ package com.yerimspring.web.user;
 import java.util.List;
 
 public interface UserService {
-	public void add(User user);
 
-	public int count();
+	public void signIn(User user);
 
-	public User signin(User user);
+	public List<User> findAll();
+
+	public User findOne(String userid);
+
+	public void modify(User user);
+
+	public void remove(User user);
+
 	
-	public User detail(String userid);
-
-	public boolean update(User user);
-
-	public boolean remove(String userid);
-
-	public List<User> list();
-
-	public boolean idCheck(String userid);
-
 }

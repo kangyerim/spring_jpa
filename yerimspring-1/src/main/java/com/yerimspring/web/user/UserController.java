@@ -18,54 +18,35 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yerimspring.web.util.Messenger;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired UserService userService;
 	
-	@PostMapping("/signup")
-	public Messenger signup(@RequestBody User user) {
-		int count = userService.count();
-		userService.add(user);
-		//return (userService.count() == (count + 1))? Messenger.Success : Messenger.FAIL;
+	@PostMapping("")
+	public Messenger post(@RequestBody User user) {
+		userService.signIn(user);
 		return Messenger.Success;
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("")
 	public List<User> list(){
-		//return userService.list();
-		return userService.list();
+		return userService.findAll();
 	}
 	
-	@GetMapping("/idCheck/{userid}")
-	public Messenger idCheck(@PathVariable String userid){
-		return (userService.idCheck(userid))? Messenger.Success : Messenger.FAIL;
-	}
-	
-	@PostMapping("/signin")
-	public Map<String,Object> signin(@RequestBody User user) {
-		Map<String,Object> returnMap = new HashMap<>();
-		User signinedUser = userService.signin(user);
-		if(signinedUser != null) {
-			returnMap.put("user", signinedUser);
-			returnMap.put("messenger", Messenger.Success);
-		} else {
-			returnMap.put("messenger", Messenger.FAIL);
-		}
-		return returnMap;
-	}
-	
-	@GetMapping("detail/{userid}")
+	@GetMapping("/{userid}")
 	public User detail(@PathVariable String userid) {
-		return userService.detail(userid);
+		return userService.findOne(userid);
 	}
 	
-	@PutMapping("/update")
-	public Messenger update(@RequestBody User user) {
-		return (userService.update(user))? Messenger.Success : Messenger.FAIL ;
+	@PutMapping("/{userid}")
+	public Messenger put(@RequestBody User user) {
+		userService.modify(user);
+		return Messenger.Success;
 	}
 	
-	@DeleteMapping("/remove/{userid}")
-	public Messenger remove(@PathVariable String userid) {
-		return (userService.remove(userid)) ? Messenger.Success : Messenger.FAIL;
+	@DeleteMapping("/{userid}")
+	public Messenger delete(@RequestBody User user) {
+		userService.remove(user);
+		return Messenger.Success;
 	}
 }
