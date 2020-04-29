@@ -22,6 +22,7 @@ public class AdminDaoImpl implements AdminDao {
 			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();
+			System.out.println("<<<<<<<<<<<<<<<< 4. file write success");
 		} catch (Exception e) {
 			System.out.println(Messenger.FILE_INSERT_ERROR);
 		} 

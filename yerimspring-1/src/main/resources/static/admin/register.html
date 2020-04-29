@@ -45,21 +45,21 @@
 		$('#buttons').addClass('center')
 		$('#table').addClass('border_black center')
 		$('#profile').css({width : '140px', height : '180px'})
-		$('#register_b').css('cursor', 'pointer').click(e => {
+		$('#register_b').click(e => {
 			e.preventDefault()
 			$.ajax({
 				url : '/admins',
-				data : 'post',
-				dataType : JSON.stringify({
+				type : 'post',
+				data : JSON.stringify({
 					name : $('#name').val(),
 					position : $('#position').val(),
 					phoneNumber : $('#phoneNumber').val(),
 					email : $('#email').val()
 				}),
+				dataType :'json',
 				contentType : 'application/json',
 				success : d => {
 					location.href = 'access.html'
-					alert('너의 사번과 비번을 알아야한다')
 				},
 				error : (r,x,q) => {
 					alert(r.status)
