@@ -5,6 +5,8 @@
 	<title>Insert title here</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href ="/resources/css/global.css">
+	<script type="text/javascript" src ="/resources/js/user.js" ></script>
+	<script type="text/javascript" src = "/resources/js/admin.js"></script>
 </head>
 <body>
 	<section>
@@ -26,39 +28,9 @@
 	</section>
 
 	<script>
-		$('#home').addClass('center')
-		$('#head').css({width :'180px', height : '100px'})
-		$('#naviBar').css({border : '3px solid #cc0e74', width : '250px'}).addClass('center')
-		$('#go').css({background : '#cc0e74'}).css('cursor','pointer')
-		$('#register_a').css('cursor','pointer').click( e => {
-			e.preventDefault()
-			location.href = "admin/register.html"
-		})
-		$('#login_a').css('cursor','pointer')
-		$('#join_a').css('cursor','pointer')
-		$('#access_a').css('cursor','pointer').click(e => {
-			e.preventDefault()
-			$.ajax({
-				url : '/admins',
-				type : 'post',
-				data : JSON.stringify({}),
-				dataType : 'json',
-				contentType : 'application/json',
-				success : d => {
-					if(){
-						location.href = 'admin/list.html'
-						
-					} else{
-						alert('관리자 접근 실패')
-					}
-				},
-				error : (r,x,s)=>{
-					alert('r.status')
-				}
-			})
-		})
-		$('#nav').css({height : '50px'}).addClass('center')
-		$('#pics').css({height : '200px'})
+		user.init()
+
+
 		
 	</script>
 </body>
