@@ -12,6 +12,6 @@ public class Admin {
 	
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%s,%s,%s,%s,%s,%s", employNumber, password,name,position,profile,regiterDate,email,phoneNumber);
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%s", employNumber,password,name,position,profile,regiterDate,email,phoneNumber);
 	}
 }
