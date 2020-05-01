@@ -40,7 +40,27 @@
 		})
 		$('#login_a').css('cursor','pointer')
 		$('#join_a').css('cursor','pointer')
-		$('#access_a').css('cursor','pointer')
+		$('#access_a').css('cursor','pointer').click(e => {
+			e.preventDefault()
+			$.ajax({
+				url : '/admins',
+				type : 'post',
+				data : JSON.stringify({}),
+				dataType : 'json',
+				contentType : 'application/json',
+				success : d => {
+					if(){
+						location.href = 'admin/list.html'
+						
+					} else{
+						alert('관리자 접근 실패')
+					}
+				},
+				error : (r,x,s)=>{
+					alert('r.status')
+				}
+			})
+		})
 		$('#nav').css({height : '50px'}).addClass('center')
 		$('#pics').css({height : '200px'})
 		

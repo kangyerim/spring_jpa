@@ -18,7 +18,6 @@ import com.yerimspring.web.util.Messenger;
 public class AdminServiceImpl implements AdminService {
 	@Autowired AdminDao adminDao;
 
-	/*employNumber,password,name,position,profile,regiterDate,email,phoneNumber*/
 	
 	@Override
 	public void register(Admin admin) {
