@@ -18,7 +18,7 @@ public class AdminDaoImpl implements AdminDao {
 		try {
 			BufferedWriter writer = new BufferedWriter(
 									new FileWriter(
-									new File(Data.ADMIN_PATH.toString()+Data.LIST+Data.CSV), true));
+									new File(Data.ADMIN_PATH.toString()+Data.ADMIN_LIST+Data.CSV), true));
 			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();

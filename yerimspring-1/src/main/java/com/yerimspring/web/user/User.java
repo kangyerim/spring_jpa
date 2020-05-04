@@ -9,7 +9,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%s,%s,%s", userid, password, name, ssn, address);
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", userid, password, name, ssn, address,email,phoneNumber,regiterDate,profile);
 	}
 	
 }

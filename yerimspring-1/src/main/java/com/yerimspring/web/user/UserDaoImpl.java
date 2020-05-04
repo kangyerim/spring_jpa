@@ -1,8 +1,16 @@
 package com.yerimspring.web.user;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+
+import com.yerimspring.web.util.Data;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -10,29 +18,53 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void insert(User user) {
 		try {
-			
+			BufferedWriter writer = new BufferedWriter(
+									new FileWriter(
+									new File(Data.USER_PATH.toString()+Data.USER_LIST+Data.CSV)));
+			writer.write(user.toString());
+			writer.newLine();
+			writer.flush();
 		} catch(Exception e) {
 			
-		} finally {
-			
-		}
+		} 
 	}
 
 	@Override
 	public List<User> selectAll() {
-		List<User> list = null;
+		List<User> userList = new ArrayList<>();
+		List<String> list = new ArrayList<>();
 		try {
-			
+			BufferedReader reader = new BufferedReader(
+									new FileReader(
+									new File(Data.USER_PATH.toString()+Data.USER_LIST+Data.CSV)));
+			String messege = "";
+			while((messege= reader.readLine())!= null) {
+				list.add(messege);
+			}
+			reader.close();
 		}catch (Exception e) {
-			
-		}finally {
-			
+
 		}
-		return list;
+		User u = null;
+		for(int i = 0; i <list.size(); i++) {
+			u = new User();
+			String[] arr = list.get(i).split(",");
+			u.setUserid(arr[0]);
+			u.setPassword(arr[1]);
+			u.setName(arr[2]);
+			u.setSsn(arr[3]);
+			u.setAddress(arr[4]);
+			u.setProfile(arr[5]);
+			u.setEmail(arr[6]);
+			u.setPhoneNumber(arr[7]);
+			u.setRegiterDate(arr[8]);
+			userList.add(u);
+		}
+		return userList;
 	}
 
 	@Override
-	public User selectOne(String userid) {
+	public User selectOne(String name) {
 		User detail = null;
 		return detail;
 	}
