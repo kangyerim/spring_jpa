@@ -1,6 +1,7 @@
 "use strict"
 var admin = admin || {}
 admin = (()=>{
+	const WHEN_ERROR = `missing js file :(`
 	let user_vue
 	
 	let init = ()=>{
@@ -29,8 +30,8 @@ admin = (()=>{
 						.appendTo("#user_"+(i+1))
 						.click(e =>{
 							$('#content').empty()
-							$('#content').html(userVue.detail())
-							$.getJSON(`/users/${j.name}`, d =>{
+							$(userVue.detail()).appendTo('#content')
+							$.getJSON(`/users/${j.userid}`, d =>{
 								$('#name').text(d.name)
 								$('#userid').text(d.userid)
 								$('#ssn').text(d.ssn)
@@ -41,8 +42,15 @@ admin = (()=>{
 						})
 				})
 			})
-		}).fail(()=>{
+			$('#userList_b').click(e => {
+				e.preventDefault()
+				$('#content').empty()
+			})
+				
 			
+			
+		}).fail(()=>{
+			alert(`WHEN_ERROR`)
 		})
 	}
 	let setContentView = () => {

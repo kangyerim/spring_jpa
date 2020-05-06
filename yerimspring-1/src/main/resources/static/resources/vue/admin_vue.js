@@ -1,5 +1,5 @@
 "use strict"
-const adminVue = {
+var adminVue = {
 		join : () => {
 			return `<table>
 			<table id="table" style = "margin: 0 auto">
@@ -21,6 +21,11 @@ const adminVue = {
 					<label>PassWord</label><br> <input id="password" type="text"><br>
 				</form>
 			</article>`
+		},
+		listHead : () => {
+			return `<table id = 'listHead'>
+			<tr><td>no.</td><td>분실물id</td><td>분류</td><td>습득물품명</td><td>습득일자</td><td>습득 위치</td></tr>
+			</table>`
 		}
 }
 	

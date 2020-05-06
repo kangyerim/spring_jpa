@@ -1,5 +1,5 @@
 "use strict"
-const userVue = {
+var userVue = {
 		detail : () => {
 			return `<table>
 			<table id="table" style = "margin: 0 auto, border : 1px solid black">

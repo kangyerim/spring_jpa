@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			BufferedWriter writer = new BufferedWriter(
 									new FileWriter(
-									new File(Data.USER_PATH.toString()+Data.USER_LIST+Data.CSV)));
+									new File(Data.USERS.toString())));
 			writer.write(user.toString());
 			writer.newLine();
 			writer.flush();
@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			BufferedReader reader = new BufferedReader(
 									new FileReader(
-									new File(Data.USER_PATH.toString()+Data.USER_LIST+Data.CSV)));
+									new File(Data.USERS.toString())));
 			String messege = "";
 			while((messege= reader.readLine())!= null) {
 				list.add(messege);
@@ -64,9 +64,16 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User selectOne(String name) {
-		User detail = null;
-		return detail;
+	public User selectOne(String userid) {
+		List<User> list = selectAll();
+		User findUser = null;
+		for(User u : list) {
+			if(userid.equals(u.getUserid())) {
+				findUser = u;
+				break;
+			}
+		}
+		return findUser;
 	}
 
 	@Override

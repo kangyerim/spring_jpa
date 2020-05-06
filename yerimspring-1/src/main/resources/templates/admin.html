@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/resources/css/global.css">
 <script type="text/javascript" src="/resources/js/user.js"></script>
 <script type="text/javascript" src="/resources/js/admin.js"></script>
+<script type="text/javascript" src="/resources/js/lost.js"></script>
 <style>
 	.border_black {
 		border: 1px solid black;
@@ -90,14 +91,16 @@
 		background-color: #555;
 		color: white;
 	}
+	#firstTable{background-color : #fab7b7; border : 1px solid #e4e4e4;}
+	#listHeadFORid {border : 1px solid #e4e4e4;}
 </style>
 </head>
 <body>
 	<ul id="navi">
-		<li><a class="active" href="#home">Admin</a></li>
-		<li><a href="#news">회원관리</a></li>
-		<li><a href="#contact">Contact</a></li>
-		<li><a href="#about">About</a></li>
+		<li><a class="active">관리자</a></li>
+		<li><a >회원관리</a></li>
+		<li><a >Contact</a></li>
+		<li><a >About</a></li>
 	</ul>
 	<table id="kcdc" style="margin: 100px auto; height: 90%">
 		<tr>
@@ -108,10 +111,10 @@
 						이름 조회 : <input type="text" />
 					</div>
 					<ul id="side_menu">
-						<li><a class="active" href="#home">사용자 목록</a></li>
-						<li><a href="#news">관리자 목록</a></li>
-						<li><a href="#contact">음원 차트</a></li>
-						<li><a href="#about">앨범 차트</a></li>
+						<li><a class="active" id = "userList_b">사용자 목록</a></li>
+						<li><a id="adminList_b">관리자 목록</a></li>
+						<li><a id = "lostList_b">분실물 목록</a></li>
+						<li><a >앨범 차트</a></li>
 					</ul>
 				</div>
 			</td>
@@ -137,6 +140,7 @@
 
 	<script>
 		admin.init()
+		lost.init()
 	</script>
 </body>
 </html>
